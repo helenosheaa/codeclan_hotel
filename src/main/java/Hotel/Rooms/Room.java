@@ -6,20 +6,28 @@ import java.util.ArrayList;
 
 public abstract class Room {
 
-    private int capacity;
+    private RoomType roomType;
     private ArrayList<Guest> guests;
 
-    public Room(int capacity, ArrayList<Guest> guests){
-        this.capacity = capacity;
+    public Room(RoomType roomType, ArrayList<Guest> guests){
+        this.roomType = roomType;
         this.guests = guests;
     }
 
     public int getCapacity(){
-        return this.capacity;
+        return roomType.getCapacity();
+    }
+
+    public double getRoomRate(){
+        return roomType.getRoomRate();
+    }
+
+    public String getRoomType(){
+        return roomType.getRoomType();
     }
 
     public ArrayList<Guest> getGuests(){
-        return new ArrayList<Guest> (this.guests);
+        return new ArrayList<> (this.guests);
     }
 
 }
