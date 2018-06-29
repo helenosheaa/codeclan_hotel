@@ -3,6 +3,7 @@ package Hotel;
 import Hotel.Rooms.Bedroom;
 import Hotel.Rooms.ConferenceRoom;
 import Hotel.Rooms.DiningRoom;
+import Hotel.Rooms.RoomType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,10 +17,19 @@ public class HotelTest {
     ArrayList<Bedroom> bedrooms;
     ArrayList<DiningRoom> diningRooms;
     ArrayList<ConferenceRoom> conferenceRooms;
+    Bedroom bedroom1;
+    ArrayList guests;
+    Guest guest1;
+    Guest guest;
+    Bedroom bedrooms;
 
     @Before
     public void before() {
         hotel = new Hotel("CodeClan Towers", bedrooms, conferenceRooms, diningRooms);
+        bedrooms.add(bedroom1);
+        bedroom1 = new Bedroom(21, guests, RoomType.SINGLE);
+        guest1 = new Guest("Helen");
+        guests = new ArrayList<Guest>();
     }
 
     @Test
@@ -39,7 +49,8 @@ public class HotelTest {
 
     @Test
     public void canCheckInGuest(){
-
+        hotel.checkInGuest(bedroom1, guest1);
+        assertEquals(1, bedroom1.getGuests().size());
     }
 
 }
