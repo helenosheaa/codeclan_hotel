@@ -5,8 +5,8 @@ public enum RoomType {
     DOUBLE(2, "Double", 78.99),
     TRIPLE(3, "Triple", 99.99),
     SUITE(4, "Suite", 129.99),
-    DINING(20, "Dining", 0),
-    CONFERENCE(30, "CONFERENCE", 66.66);
+    DINING(20, "Dining Room", 100.00),
+    CONFERENCE(30, "Conference Room", 66.66);
 
 
     private int capacity;
