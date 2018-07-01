@@ -1,9 +1,6 @@
 package Hotel;
 
-import Hotel.Rooms.Bedroom;
-import Hotel.Rooms.ConferenceRoom;
-import Hotel.Rooms.DiningRoom;
-import Hotel.Rooms.RoomType;
+import Hotel.Rooms.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +16,7 @@ public class HotelTest {
     ArrayList<ConferenceRoom> conferenceRooms;
     ArrayList<Guest> guests;
     Bedroom bedroom1;
+    Bedroom bedroom2;
     DiningRoom diningRoom1;
     ConferenceRoom conferenceRoomA;
     Guest guest1;
@@ -29,10 +27,11 @@ public class HotelTest {
         guest1 = new Guest("Helen");
         guest2 = new Guest("Nick");
         guests = new ArrayList<>();
-        guests.add(guest1);
-        guests.add(guest2);
+//        guests.add(guest1);
+//        guests.add(guest2);
 
         bedroom1 = new Bedroom(21, guests, RoomType.DOUBLE);
+        bedroom2 = new Bedroom(22, guests, RoomType.SINGLE);
         bedrooms = new ArrayList<>();
         bedrooms.add(bedroom1);
 
@@ -45,7 +44,12 @@ public class HotelTest {
         conferenceRooms.add(conferenceRoomA);
 
 
-        hotel = new Hotel("CodeClan Towers", bedrooms, conferenceRooms, diningRooms, guests);
+        hotel = new Hotel("CodeClan Towers", bedrooms, conferenceRooms, diningRooms);
+    }
+
+    @Test
+    public void hasName() {
+        assertEquals("CodeClan Towers", hotel.getName());
     }
 
     @Test
@@ -54,8 +58,20 @@ public class HotelTest {
     }
 
     @Test
+    public void canAddBedroom(){
+        bedrooms.add(bedroom2);
+        assertEquals(2, hotel.getBedrooms().size());
+    }
+
+    @Test
     public void hasDiningRoom(){
         assertEquals(diningRooms, hotel.getDiningRooms());
+    }
+
+    @Test
+    public void canAddDiningRoom(){
+        diningRooms.add(diningRoom1);
+        assertEquals(2, hotel.getDiningRooms().size());
     }
 
     @Test
@@ -63,10 +79,23 @@ public class HotelTest {
         assertEquals(conferenceRooms, hotel.getConferenceRooms());
     }
 
-//    @Test
-//    public void canCheckInGuest(){
-//        hotel.checkInGuest(bedroom1, guest1);
-//        assertEquals(1, bedroom1.getGuests().size());
-//    }
+    @Test
+    public void canAddConferenceRoom(){
+        conferenceRooms.add(conferenceRoomA);
+        assertEquals(2, hotel.getConferenceRooms().size());
+    }
+
+    @Test
+    public void bedroomStartsEmpty(){
+        assertEquals(0, bedroom2.getGuests().size());
+    }
+
+
+    @Test
+    public void canCheckInGuest(){
+        hotel.checkInGuest(bedroom1, guest1);
+        assertEquals(1, bedroom1.getGuests().size());
+    }
+
 
 }

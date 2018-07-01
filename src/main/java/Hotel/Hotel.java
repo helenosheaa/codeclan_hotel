@@ -1,12 +1,11 @@
 package Hotel;
 
-import Hotel.Rooms.Bedroom;
-import Hotel.Rooms.ConferenceRoom;
-import Hotel.Rooms.DiningRoom;
-import Hotel.Rooms.Room;
+import Hotel.Rooms.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import static Hotel.Rooms.RoomType.DOUBLE;
 
 public class Hotel {
 
@@ -14,14 +13,16 @@ public class Hotel {
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
     private ArrayList<DiningRoom> diningRooms;
-    private ArrayList<Guest> guests;
 
-    public Hotel(String name, ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms, ArrayList<DiningRoom> diningRooms, ArrayList<Guest> guests) {
+    public Hotel(String name, ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms, ArrayList<DiningRoom> diningRooms) {
         this.name = name;
         this.bedrooms = bedrooms;
         this.diningRooms = diningRooms;
         this.conferenceRooms = conferenceRooms;
-        this.guests = guests;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public ArrayList<Bedroom> getBedrooms(){
@@ -36,13 +37,10 @@ public class Hotel {
         return new ArrayList<>(this.conferenceRooms);
     }
 
-    public ArrayList<Guest> getGuests(){
-        return new ArrayList<>(this.guests);
+
+    public void checkInGuest(Room bedroom, Guest guest){
+        bedroom.addGuest(guest);
     }
 
-//    public void checkInGuest(Room bedroom, Guest guest){
-//        if (bedroom.getGuests().size() == 0) {
-//            bedroom.getGuests().add(guest);
-//        }
-//    }
+
 }

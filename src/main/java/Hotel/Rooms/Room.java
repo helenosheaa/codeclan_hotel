@@ -30,4 +30,8 @@ public abstract class Room {
         return new ArrayList<> (this.guests);
     }
 
+    public void addGuest(Guest guest) {
+        this.guests.add(guest);
+    }
+
 }
