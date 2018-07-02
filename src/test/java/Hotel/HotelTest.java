@@ -96,6 +96,12 @@ public class HotelTest {
         hotel.checkInGuest(bedroom1, guest1);
         assertEquals(1, bedroom1.getGuests().size());
     }
-
+//
+//    @Test
+//    public boolean isOccupied(){
+//        hotel.checkInGuest(bedroom1, guest1);
+//        assertEquals(true, bedroom1.isOccupied());
+//    }
+////
 
 }

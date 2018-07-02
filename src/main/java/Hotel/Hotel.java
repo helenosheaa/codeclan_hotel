@@ -42,5 +42,20 @@ public class Hotel {
         bedroom.addGuest(guest);
     }
 
+//    public boolean roomOccupied(Room bedroom){
+//        if (bedroom.getGuests().size() == 0) {
+//            return true;
+//        }
+//            return false;
+//        }
+//    }
+
+//    public boolean isOccupied(Room bedroom, Guest guest) {
+//        if (bedroom.getGuests().size() == 0){
+//            return true;
+//        }
+//        return false;
+//    }
+
 
 }
